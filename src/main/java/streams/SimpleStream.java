@@ -1,10 +1,18 @@
 package streams;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+/**
+ * This class needs an overhaul, it was a very quick and dirty experiment to better understand an exception I was seeing
+ * elsewhere
+ */
 public class SimpleStream {
+    private static final Logger LOG = LoggerFactory.getLogger(SimpleStream.class);
 
     public static void main(String[] args) {
         SimpleStream simpleStream = new SimpleStream();
@@ -19,9 +27,11 @@ public class SimpleStream {
         SimplePojo first = pojos.stream()
                 .filter(sp -> sp.getName().contains(filter))
                 .findFirst()
-                .get();
-        System.out.println(first);
+                .orElse(null);
+        LOG.info("First: {}", first);
     }
+
+
 
     private void eatException(List<SimplePojo> pojos) {
         try {
@@ -29,18 +39,18 @@ public class SimpleStream {
                     .filter(sp -> sp.getName().contains("blargh"))//not in List
                     .findFirst()
                     .get();
-            System.out.println(first);
+            LOG.info("first {}", first);
         } catch (NoSuchElementException e) {
-            System.out.println("Expected exception caught");
+            LOG.info("Expected exception caught", e);
         }
     }
 
     private void showHandledException(List<SimplePojo> pojos) {
         SimplePojo pojo = exceptionHandled(pojos, "blarhg");//should be null
-        System.out.println("should be null: " + pojo);
+        LOG.info("should be null: " + pojo);
 
         pojo = exceptionHandled(pojos, "name 3");
-        System.out.println("should be 3: " + pojo);
+        LOG.info("should be 3: " + pojo);
     }
 
     private SimplePojo exceptionHandled(List<SimplePojo> pojos, String filter) {
@@ -53,7 +63,7 @@ public class SimpleStream {
     }
 
     private List<SimplePojo> getSimplePojos(int numOfPojos) {
-        List<SimplePojo> pojos = new ArrayList<SimplePojo>();
+        List<SimplePojo> pojos = new ArrayList<>();
 
         for (int i = 0; i < numOfPojos; i++) {
             pojos.add(new SimplePojo().setIndex("index: " + i)

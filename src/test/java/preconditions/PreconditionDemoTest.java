@@ -1,6 +1,5 @@
 package preconditions;
 
-import com.google.common.base.*;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -8,7 +7,7 @@ import static org.junit.Assert.*;
 
 public class PreconditionDemoTest {
 
-    public static final String BLARGH = "blargh";
+    private static final String BLARGH = "blargh";
 
     @Test
     public void divide() {
