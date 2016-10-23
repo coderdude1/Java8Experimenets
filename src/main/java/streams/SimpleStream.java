@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 /**
  * This class needs an overhaul, it was a very quick and dirty experiment to better understand an exception I was seeing
@@ -18,31 +17,16 @@ public class SimpleStream {
         SimpleStream simpleStream = new SimpleStream();
         List<SimplePojo> pojos = simpleStream.getSimplePojos(10);
         simpleStream.happyCase(pojos, "name 3");
-        simpleStream.eatException(pojos);
         simpleStream.showHandledException(pojos);
     }
 
-
-    private void happyCase(List<SimplePojo> pojos, String filter) {
+    public SimplePojo happyCase(List<SimplePojo> pojos, String filter) {
         SimplePojo first = pojos.stream()
                 .filter(sp -> sp.getName().contains(filter))
                 .findFirst()
                 .orElse(null);
         LOG.info("First: {}", first);
-    }
-
-
-
-    private void eatException(List<SimplePojo> pojos) {
-        try {
-            SimplePojo first = pojos.stream()
-                    .filter(sp -> sp.getName().contains("blargh"))//not in List
-                    .findFirst()
-                    .get();
-            LOG.info("first {}", first);
-        } catch (NoSuchElementException e) {
-            LOG.info("Expected exception caught", e);
-        }
+        return first;
     }
 
     private void showHandledException(List<SimplePojo> pojos) {
@@ -54,12 +38,11 @@ public class SimpleStream {
     }
 
     private SimplePojo exceptionHandled(List<SimplePojo> pojos, String filter) {
-        SimplePojo first = pojos.stream()
+        return pojos.stream()
                 .filter(sp -> sp.getName().contains(filter))//not in List
                 .findFirst()
                 .orElse(null);
 
-        return first;
     }
 
     private List<SimplePojo> getSimplePojos(int numOfPojos) {
