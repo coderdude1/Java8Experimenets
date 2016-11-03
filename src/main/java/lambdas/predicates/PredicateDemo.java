@@ -68,7 +68,7 @@ public class PredicateDemo {
     private <T> List<T> filter(List<T> contents, SomeKindOfPredicate<T> someKindOfPredicate) {
         List<T> results = new ArrayList<>();
         for (T content : contents) {    //TODO replace with a stream
-            if (someKindOfPredicate.someTestCondition(content)) {
+            if (someKindOfPredicate.test(content)) {
                 results.add(content);
             }
         }
