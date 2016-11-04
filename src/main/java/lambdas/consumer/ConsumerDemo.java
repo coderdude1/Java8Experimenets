@@ -37,6 +37,7 @@ public class ConsumerDemo {
         }
     }
 
+    @SuppressWarnings("squid:UnusedPrivateMethod")
     private static void staticForEach(List<String> list, Consumer<String> consumer) {
         for (String stringItem : list) {
             consumer.accept(stringItem);
