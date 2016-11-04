@@ -3,9 +3,6 @@ package lambdas.function;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Randy on 11/3/2016.
- */
 public class FunctionDemo {
     public static void main(String[] args) {
         FunctionDemo functionDemo = new FunctionDemo();
@@ -19,7 +16,7 @@ public class FunctionDemo {
         inputs.add("blargh22");
         inputs.add("loooooooooooooop");
         inputs.add("ooiojoiooij");
-        Function<String, Integer> fn = (String s) -> Integer.valueOf(s.length());
+        Function<String, Integer> fn = (String s) -> s.length();
         List<Integer> length = map(inputs, fn);
         length.forEach(System.out::println);
     }
