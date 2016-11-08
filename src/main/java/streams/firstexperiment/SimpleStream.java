@@ -1,4 +1,4 @@
-package streams.SimpleExperiment;
+package streams.firstexperiment;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

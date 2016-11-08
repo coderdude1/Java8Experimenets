@@ -1,4 +1,4 @@
-package streams.SimpleExperiment;
+package streams.firstexperiment;
 
 
 import com.google.common.base.MoreObjects;
@@ -29,8 +29,12 @@ public class SimplePojo {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)  {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass())  {
+            return false;
+        }
         SimplePojo that = (SimplePojo) o;
         return Objects.equals(name, that.name) &&
                 Objects.equals(index, that.index);
