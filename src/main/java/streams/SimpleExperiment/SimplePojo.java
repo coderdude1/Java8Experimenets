@@ -1,4 +1,4 @@
-package streams;
+package streams.SimpleExperiment;
 
 
 import com.google.common.base.MoreObjects;
