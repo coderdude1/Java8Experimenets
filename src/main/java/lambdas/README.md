@@ -1,9 +1,9 @@
 # Lambdas
-Each child package contains a specific functional intefrace defined in the jdk
+Each child package contains a specific functional interface defined in the jdk
   * predicate
   * consumer
   * Function
-  * filereader - various lamdba file reading tricks
+  * filereader - not an SDK lamba, just various lamdba file reading tricks
   
 Note there are other default types such as supplier, and IntPredicate, etc that I haven't implemented
 [here](https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html) is
