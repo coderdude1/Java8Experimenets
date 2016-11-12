@@ -8,7 +8,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * At the moment these are mostly from the manning java8 book ch5
+ * At the moment these are mostly from the manning java8 book ch5.1 which focuses on filtering
+ *
+ * Order is only guarnteed if the underlying source is has order, ie like a list, vs a set
  */
 public class DishFiltering {
     private static final Logger LOG = LoggerFactory.getLogger(DishFiltering.class);
@@ -24,7 +26,7 @@ public class DishFiltering {
 
     private void simpleMethodReferencePredicate() {
         List<Dish> retval =  Dish.createMenu().stream()
-                .filter(Dish::isVegetarian) //method refeerence predicate
+                .filter(Dish::isVegetarian) //method reference predicate
                 .collect(Collectors.toList());
 
         LOG.info("MethodRef: {}", retval);
@@ -39,9 +41,10 @@ public class DishFiltering {
         LOG.info("distinct filter: {}", retval);
     }
 
-    //note that the order is only due to the list, if it was a set no guarntees
     private void truncateWithLimit() {
-        int calorieCount = 300, skipCount = 3;
+        int calorieCount = 300;
+        int skipCount = 3;
+
         List<Dish> retval = Dish.createMenu().stream()
                 .filter(d -> d.getCalories() > calorieCount)
                 .limit(skipCount)
@@ -52,7 +55,10 @@ public class DishFiltering {
     }
 
     private void useSkip() {
-        int calorieThreshold = 200, skipCount = 2, limitCount = 2;
+        int calorieThreshold = 200;
+        int skipCount = 2;
+        int limitCount = 2;
+
         List<Dish> retval = Dish.createMenu().stream()
                 .filter(d -> d.getCalories() > calorieThreshold)
                 .skip(skipCount)
@@ -87,5 +93,9 @@ public class DishFiltering {
 
         LOG.info("filter first 2 meat: {}", retval);
         LOG.info("size: {}", retval.size());
+
+        for (Dish dish : retval) {
+            
+        }
     }
 }
