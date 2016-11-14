@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
  */
 public class DishFiltering {
     private static final Logger LOG = LoggerFactory.getLogger(DishFiltering.class);
+    public static final String COUNT_LOGGER = "count: {}";
 
     public static void main(String[] args) {
         DishFiltering dishFiltering = new DishFiltering();
@@ -33,7 +34,9 @@ public class DishFiltering {
     }
 
     private void simpleEvenFilterWithDistinct() {
-        List<Integer> retval = Arrays.asList(1, 2, 2, 3, 3, 2, 4, 5, 6, 5, 6).stream()
+        Integer[] numbers = {1, 2, 2, 3, 3, 2, 4, 5, 6, 5, 6};
+
+        List<Integer> retval = Arrays.stream(numbers)
                 .filter(i -> i %2 == 0)
                 .distinct()
                 .collect(Collectors.toList());
@@ -64,7 +67,7 @@ public class DishFiltering {
                 .skip(skipCount)
                 .collect(Collectors.toList());
         LOG.info("skip {} : {}", skipCount, retval);
-        LOG.info("count: {}", retval.size());
+        LOG.info(COUNT_LOGGER, retval.size());
 
         retval = Dish.createMenu().stream()
                 .filter(d -> d.getCalories() > calorieThreshold)
@@ -73,7 +76,7 @@ public class DishFiltering {
                 .collect(Collectors.toList());
 
         LOG.info("skipBeforeLimit: {}", retval);
-        LOG.info("count: {}", retval.size());
+        LOG.info(COUNT_LOGGER, retval.size());
 
         retval = Dish.createMenu().stream()
                 .filter(d -> d.getCalories() > calorieThreshold)
@@ -82,7 +85,7 @@ public class DishFiltering {
                 .collect(Collectors.toList());
 
         LOG.info("limitBeforeSkip: {}", retval);
-        LOG.info("count: {}", retval.size());
+        LOG.info(COUNT_LOGGER, retval.size());
     }
 
     private void filterTwoMeat() {
@@ -93,9 +96,5 @@ public class DishFiltering {
 
         LOG.info("filter first 2 meat: {}", retval);
         LOG.info("size: {}", retval.size());
-
-        for (Dish dish : retval) {
-            
-        }
     }
 }

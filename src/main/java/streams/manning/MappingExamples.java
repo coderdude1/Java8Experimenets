@@ -1,6 +1,5 @@
 package streams.manning;
 
-import com.sun.java.swing.plaf.windows.WindowsTreeUI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -116,6 +115,7 @@ public class MappingExamples {
     }
 
 
+    @SuppressWarnings("squid:S106")//gonna use sout for now
     private void printCommaSeperatedList(List<?> retval) {
         retval.stream()
                 .map(t -> t + ",")//TODO figure out how to not append ',' on last element
