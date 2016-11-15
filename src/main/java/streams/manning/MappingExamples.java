@@ -132,7 +132,7 @@ public class MappingExamples {
 
         pairs.forEach(pair -> {
                     String currentPair = "(" + (pair[0]) + ", " + pair[1] + "),";
-                    sb.append(currentPair.toString());
+                    sb.append(currentPair);
                 });
 
         LOG.info(sb.toString());
@@ -155,7 +155,7 @@ public class MappingExamples {
 
         pairs.forEach(pair -> {
             String currentPair = "(" + (pair[0]) + ", " + pair[1] + "),";
-            sb.append(currentPair.toString());
+            sb.append(currentPair);
         });
 
         LOG.info(sb.toString());

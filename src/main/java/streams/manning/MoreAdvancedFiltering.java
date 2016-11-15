@@ -7,6 +7,7 @@ import java.util.Optional;
 
 public class MoreAdvancedFiltering {
     private static final Logger LOG = LoggerFactory.getLogger(MoreAdvancedFiltering.class);
+    public static final String FOUND_A_VEGETARIAN_DISH_OUTPUT = "Found a vegetarian dish: {}";
 
     public static void main(String[] args) {
         MoreAdvancedFiltering moreAdvancedFiltering = new MoreAdvancedFiltering();
@@ -34,9 +35,7 @@ public class MoreAdvancedFiltering {
     }
 
     private void allMatchLogic(int calorieLimit) {
-        if(Dish.createMenu().stream().allMatch(dish -> {
-            return dish.getCalories() < calorieLimit;
-        })) {
+        if(Dish.createMenu().stream().allMatch(dish -> dish.getCalories() < calorieLimit)) {
             LOG.info("all dishes less than {} cals", calorieLimit);
         } else {
             LOG.info("some dishes great than {} cals", calorieLimit);
@@ -65,12 +64,12 @@ public class MoreAdvancedFiltering {
         Dish.createMenu().parallelStream()//note with parallel stream findAny returns a differnt value than sequential stream
                 .filter(Dish::isVegetarian)
                 .findAny()  //grab the first one and return an Optional<Dish>
-                .ifPresent(dish ->LOG.info("Found a vegetarian dish: {}", dish.getName())); //notice it is IF not IS\
+                .ifPresent(dish ->LOG.info(FOUND_A_VEGETARIAN_DISH_OUTPUT, dish.getName())); //notice it is IF not IS\
 
         Dish.createMenu().stream()//note with parallel stream findAny returns a differnt value than sequential stream
                 .filter(Dish::isVegetarian)
                 .findAny()  //grab the first one and return an Optional<Dish>
-                .ifPresent(dish ->LOG.info("Found a vegetarian dish: {}", dish.getName())); //notice it is IF not IS\
+                .ifPresent(dish ->LOG.info(FOUND_A_VEGETARIAN_DISH_OUTPUT, dish.getName())); //notice it is IF not IS\
     }
 
     private void findOneDemo() {
@@ -78,12 +77,12 @@ public class MoreAdvancedFiltering {
         Dish.createMenu().parallelStream()//note with parallel stream findFirst returns a same value than sequential stream
                 .filter(Dish::isVegetarian)
                 .findFirst()  //grab the first one and return an Optional<Dish>
-                .ifPresent(dish ->LOG.info("Found a vegetarian dish: {}", dish.getName())); //notice it is IF not IS\
+                .ifPresent(dish ->LOG.info(FOUND_A_VEGETARIAN_DISH_OUTPUT, dish.getName())); //notice it is IF not IS\
 
         Dish.createMenu().stream()//note with parallel stream findFirst returns a same value than sequential stream
                 .filter(Dish::isVegetarian)
                 .findFirst()  //grab the first one and return an Optional<Dish>
-                .ifPresent(dish ->LOG.info("Found a vegetarian dish: {}", dish.getName())); //notice it is IF not IS\
+                .ifPresent(dish ->LOG.info(FOUND_A_VEGETARIAN_DISH_OUTPUT, dish.getName())); //notice it is IF not IS\
     }
 
 }
