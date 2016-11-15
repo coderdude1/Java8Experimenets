@@ -21,6 +21,8 @@ public class MappingExamples {
         mappingExamples.flattenStreamIncorrectTwo();
         mappingExamples.flattenStreamFlatMap();
         mappingExamples.returnSquaresOfNumberStream();
+        mappingExamples.returnCombinedOutputFromTwoStreams();
+        mappingExamples.combineTwoStreamsDivisibleByThree();
     }
 
     private void simpleStringLengthExample() {
@@ -112,6 +114,51 @@ public class MappingExamples {
                 .collect(Collectors.toList());//note no guarantee of order, add a .sorted after I figure out how they work
 
         printCommaSeperatedList(squares);
+    }
+
+    private void returnCombinedOutputFromTwoStreams() {
+        LOG.info("\n\n***************  Pairs");
+
+        List<Integer> numbers1 = Arrays.asList(1, 2, 3);
+        List<Integer> numbers2 = Arrays.asList(3, 4);
+
+        List<int[]> pairs = numbers1.stream()
+                .flatMap(n1 -> numbers2.stream()
+                                .map(n2 -> new int[]{n1, n2})
+                )
+        .collect(Collectors.toList());
+
+        StringBuilder sb = new StringBuilder();
+
+        pairs.forEach(pair -> {
+                    String currentPair = "(" + (pair[0]) + ", " + pair[1] + "),";
+                    sb.append(currentPair.toString());
+                });
+
+        LOG.info(sb.toString());
+    }
+
+    private void combineTwoStreamsDivisibleByThree() {
+        LOG.info("\n\n***************  Pairs divisible by 3");
+
+        List<Integer> numbers1 = Arrays.asList(1, 2, 3);
+        List<Integer> numbers2 = Arrays.asList(3, 4);
+
+        List<int[]> pairs = numbers1.stream()
+                .flatMap(n1 -> numbers2.stream()
+                        .filter(n2 -> (n1 + n2) % 3 == 0)
+                        .map(n2 -> new int[]{n1, n2})
+                )
+                .collect(Collectors.toList());
+
+        StringBuilder sb = new StringBuilder();
+
+        pairs.forEach(pair -> {
+            String currentPair = "(" + (pair[0]) + ", " + pair[1] + "),";
+            sb.append(currentPair.toString());
+        });
+
+        LOG.info(sb.toString());
     }
 
 
