@@ -153,10 +153,7 @@ public class MappingExamples {
 
         StringBuilder sb = new StringBuilder();
 
-        pairs.forEach(pair -> {
-            String currentPair = "(" + (pair[0]) + ", " + pair[1] + "),";
-            sb.append(currentPair);
-        });
+        pairs.forEach(pair -> sb.append("(" + (pair[0]) + ", " + pair[1] + "), "));//TODO figure out how to not appned ',' on last element
 
         LOG.info(sb.toString());
     }
