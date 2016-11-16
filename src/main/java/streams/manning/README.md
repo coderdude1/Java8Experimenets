@@ -45,4 +45,11 @@ would return a stream<whatever type getName returns>
 # flatMap
 used to coallesce multiple streams into a single stream
 
+# TODO
+* add functional descriptors to all examples
+* add some good reference links
+* cleanup .md files to be more useful
+* look into regrouping the classes to be more logical groupings
+
+
 
