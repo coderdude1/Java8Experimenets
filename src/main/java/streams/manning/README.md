@@ -45,6 +45,115 @@ would return a stream<whatever type getName returns>
 # flatMap
 used to coallesce multiple streams into a single stream
 
+# stream methods so far
+pg 260
+
+Operation Type 
+
+Return type
+
+Type/functional interface used
+
+Function descriptor
+<end of header>
+
+filter
+Intermediate
+Stream<T>
+Predicate<T>
+T -> boolean
+
+distinct
+Intermediate (stateful-unbounded)
+Stream<T>
+
+
+
+skip
+Intermediate (stateful-bounded)
+Stream<T>
+long
+
+
+limit
+Intermediate (stateful-bounded)
+Stream<T>
+long
+
+
+map
+Intermediate
+Stream<R>
+Function<T, R>
+T -> R
+
+flatMap
+Intermediate
+Stream<R>
+Function<T, Stream<R>>
+T -> Stream<R>
+
+sorted
+Intermediate (stateful-unbounded)
+Stream<T>
+Comparator<T>
+(T, T) -> int
+
+anyMatch
+Terminal
+boolean
+Predicate<T>
+T -> boolean
+
+noneMatch
+Terminal
+boolean
+Predicate<T>
+T -> boolean
+
+allMatch
+Terminal
+boolean
+Predicate<T>
+T -> boolean
+
+findAny
+Terminal
+Optional<T>
+
+
+
+findFirst
+Terminal
+Optional<T>
+
+
+
+forEach
+Terminal
+void
+Consumer<T>
+T -> void
+
+collect
+terminal
+R
+Collector<T, A, R>
+
+
+reduce
+Terminal (stateful-bounded)
+Optional<T>
+BinaryOperator<T>
+(T, T) -> T
+
+count
+Terminal
+long
+
+
+
+
 # TODO
 * add functional descriptors to all examples
 * add some good reference links
