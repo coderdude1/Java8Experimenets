@@ -157,6 +157,10 @@ public class TraderQuiz {
                 .min((o1, o2) -> o1.getValue() - o2.getValue())//note htis can be done many wayw
                 .orElseGet(null);
 
-        LOG.info("MaxTrans: {}", minTrans);
+        LOG.info("Mainrans: {}", minTrans);
+
+        //book example
+        transactions.stream().min(comparing(Transaction::getValue))
+                .ifPresent(transaction -> LOG.info("book example minTrans []", transaction));
     }
 }
