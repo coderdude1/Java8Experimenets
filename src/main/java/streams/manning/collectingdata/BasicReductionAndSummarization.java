@@ -1,4 +1,4 @@
-package streams.manning.summarizing;
+package streams.manning.collectingdata;
 
 import streams.manning.Dish;
 
