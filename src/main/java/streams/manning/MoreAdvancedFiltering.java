@@ -38,7 +38,7 @@ public class MoreAdvancedFiltering {
         if(Dish.createMenu().stream().allMatch(dish -> dish.getCalories() < calorieLimit)) {
             LOG.info("all dishes less than {} cals", calorieLimit);
         } else {
-            LOG.info("some dishes great than {} cals", calorieLimit);
+            LOG.info("some dishes great ..than {} cals", calorieLimit);
         }
     }
 

@@ -16,6 +16,6 @@ tldr function descriptor is the input type and output types
 ## Preconditions
 some stuff using the guava Preconditions class, and the Objects.requireNotNull
 
-##Streams
+## Streams
 started as a very quick and dirty experiment with stream processing, and has grown to include more specific examples, mostly from 
 the java 8 book mentioned in the overview.
