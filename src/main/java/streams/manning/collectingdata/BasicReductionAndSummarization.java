@@ -1,5 +1,7 @@
 package streams.manning.collectingdata;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import streams.manning.Dish;
 
 import java.util.Comparator;
@@ -12,33 +14,35 @@ import static java.util.stream.Collectors.*;
  * Section 6.2 in manning book
  */
 public class BasicReductionAndSummarization {
+    private static final Logger LOG = LoggerFactory.getLogger(BasicReductionAndSummarization.class);
+
     public static void main(String[] args) {
         BasicReductionAndSummarization basicReductionAndSummarization = new BasicReductionAndSummarization();
         basicReductionAndSummarization.minMaxWithStreams();
         basicReductionAndSummarization.simpleSummation();
     }
 
-    public void minMaxWithStreams() {
+    private void minMaxWithStreams() {
         Comparator<Dish> dishCaloriesComparator = Comparator.comparingInt(Dish::getCalories);
         Optional<Dish> mostCalorieDish = Dish.createMenu().stream()
-                .collect(maxBy(dishCaloriesComparator));
+                .collect(maxBy(dishCaloriesComparator));//note there is a stream().min and stream().max
 
         Optional<Dish> minCalorieDish = Dish.createMenu().stream()
                 .collect(minBy(dishCaloriesComparator));
 
-        System.out.println("Max calorie dish is :" + mostCalorieDish);
-        System.out.println("Min calorie dish is :" + minCalorieDish);
+        LOG.info("Max calorie dish is: {}", mostCalorieDish);
+        LOG.info("Min calorie dish is: {}", minCalorieDish);
     }
 
-    public void simpleSummation() {
+    private void simpleSummation() {
         //note there is a summingFloat and summingDouble
         int totalCalories = Dish.createMenu().stream().collect(summingInt(Dish::getCalories));
-        System.out.println("Total Calories = " + totalCalories);
+        LOG.info("Total Calories: {} ", totalCalories);
 
         double avcGalories = Dish.createMenu().stream().collect(averagingDouble(Dish::getCalories));
-        System.out.println("Avg calories: " + avcGalories);
+        LOG.info("Avg calories: {}", avcGalories);
 
         IntSummaryStatistics menuStats = Dish.createMenu().stream().collect(summarizingInt(Dish::getCalories));
-        System.out.println("Stats: " + menuStats);
+        LOG.info("Stats: {}", menuStats);
     }
 }
