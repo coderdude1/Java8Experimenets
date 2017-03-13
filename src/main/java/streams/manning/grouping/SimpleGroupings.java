@@ -19,7 +19,7 @@ public class SimpleGroupings {
     public static void main(String[] args) {
         SimpleGroupings simpleGroupings = new SimpleGroupings();
         simpleGroupings.simpleGroupings();
-        simpleGroupings.slightlyLessSimpleGrouping();
+        simpleGroupings.multiLevelGrouping();
     }
 
     private void simpleGroupings() {
@@ -29,7 +29,7 @@ public class SimpleGroupings {
         LOG.info("Dishes by type: {}", dishesByType);
     }
 
-    private void slightlyLessSimpleGrouping() {
+    private void multiLevelGrouping() {
         Map<Dish.Type, Map<CaloricLevel, List<Dish>>> dishesByCaloricLevel = Dish.createMenu().stream()
                 .collect(groupingBy(Dish::getType,
                         groupingBy(dish -> {
