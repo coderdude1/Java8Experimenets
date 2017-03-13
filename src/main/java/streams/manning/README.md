@@ -1,4 +1,6 @@
 # Stuff mostly from the Manning Java In Action
+# Functional Interface Types
+page 53 of manning book has a very nice table of some of the more used ones
 
 # filtering
 use .filter and pass it a predicate lambda or method reference.  There are other types of filtering such as 
