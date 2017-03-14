@@ -48,45 +48,22 @@ would return a stream<whatever type getName returns>
 used to coallesce multiple streams into a single stream
 
 # stream methods so far
-pg 260
+pg 53
 
-Operation Type 
-
-Return type
-
-Type/functional interface used
-
-Function descriptor
-<end of header>
-
-filter
-Intermediate
-Stream<T>
-Predicate<T>
-T -> boolean
-
-distinct
-Intermediate (stateful-unbounded)
-Stream<T>
+|Functional Interface | Function Descrptior |
+| --------------------| --------------------|
+| Predicate<T> |    T -> boolean|
+| Consumer<T> | T -> void|
+| Function<T, R> | T -> R |
+|Supplier<T> | () -> T
 
 
+# Intermediate Operations
+|Operation | Return Type | Input Argument | Functinal Descriptor|
+|----------|-------------| ---------------| --------------------
+|filter | Stream<T> | Predicate<T> | T -> boolean |
+|map    | Stream<R> | Function<T, R>  | T -> R
 
-skip
-Intermediate (stateful-bounded)
-Stream<T>
-long
-
-
-limit
-Intermediate (stateful-bounded)
-Stream<T>
-long
-
-
-map
-Intermediate
-Stream<R>
-Function<T, R>
 T -> R
 
 flatMap

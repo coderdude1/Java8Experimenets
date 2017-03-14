@@ -1,9 +1,8 @@
-package streams.manning;
+package streams.manning.simple;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Optional;
+import streams.manning.core.Dish;
 
 public class MoreAdvancedFiltering {
     private static final Logger LOG = LoggerFactory.getLogger(MoreAdvancedFiltering.class);

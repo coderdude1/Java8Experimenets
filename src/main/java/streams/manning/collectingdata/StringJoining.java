@@ -2,7 +2,7 @@ package streams.manning.collectingdata;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import streams.manning.Dish;
+import streams.manning.core.Dish;
 
 import static java.util.stream.Collectors.joining;
 

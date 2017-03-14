@@ -1,4 +1,4 @@
-package streams.manning;
+package streams.manning.core;
 
 import com.google.common.base.MoreObjects;
 

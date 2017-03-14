@@ -1,10 +1,10 @@
-package streams.manning;
+package streams.manning.simple;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import streams.manning.core.Dish;
 
 import java.util.List;
-import java.util.concurrent.SynchronousQueue;
 import java.util.stream.Collectors;
 
 public class DishExperiments {
